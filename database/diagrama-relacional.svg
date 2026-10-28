@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="720" viewBox="0 0 1120 720" role="img" aria-labelledby="title desc">
+  <title id="title">Diagrama relacional de productos, ventas y vendedores</title>
+  <desc id="desc">Productos y vendedores tienen una relación de uno a muchos con ventas. Cada tabla tiene una clave primaria id. Ventas incluye claves foráneas producto_id y vendedor_id y referencias opcionales a usuarios para el autor.</desc>
+  <defs>
+    <style>
+      text { font-family: 'Segoe UI', Arial, sans-serif; fill: #26354f; }
+      .heading { font-size: 25px; font-weight: 700; }
+      .subtitle { font-size: 13px; fill: #59667c; }
+      .table-title { font-size: 17px; font-weight: 700; fill: white; }
+      .field { font-size: 13px; }
+      .type { font-size: 11px; fill: #59667c; }
+      .key { fill: #88216f; font-weight: 700; }
+      .link { fill: none; stroke: #59667c; stroke-width: 2; }
+      .card { fill: white; stroke: #dce2ed; }
+      .relation { font-size: 12px; font-weight: 700; fill: #193d77; }
+    </style>
+  </defs>
+  <rect width="1120" height="720" fill="#f6f7fb"/>
+  <text x="30" y="42" class="heading">Autos · Modelo relacional</text>
+  <text x="30" y="66" class="subtitle">Tres tablas principales · PostgreSQL · Una venta contiene un producto y un vendedor</text>
+  <path class="link" d="M320 173 H360 V212 H400"/>
+  <text x="337" y="163" class="relation">1</text><text x="374" y="202" class="relation">N</text>
+  <path class="link" d="M800 173 H760 V247 H720"/>
+  <text x="735" y="237" class="relation">N</text><text x="778" y="163" class="relation">1</text>
+  <rect x="20" y="104" width="300" height="279" rx="12" class="card"/>
+  <path d="M32 104 H308 Q320 104 320 116 V150 H20 V116 Q20 104 32 104" fill="#193d77"/>
+  <text x="38" y="134" class="table-title">PRODUCTOS</text>
+  <text x="38" y="177" class="field key">PK  id</text><text x="236" y="177" class="type">integer</text>
+  <text x="38" y="212" class="field">nombre</text><text x="220" y="212" class="type">varchar(120)</text>
+  <text x="38" y="247" class="field">descripcion</text><text x="220" y="247" class="type">varchar(500)</text>
+  <text x="38" y="282" class="field">precio</text><text x="215" y="282" class="type">numeric(12,2)</text>
+  <text x="38" y="317" class="field">stock</text><text x="236" y="317" class="type">integer</text>
+  <text x="38" y="352" class="field">activo</text><text x="236" y="352" class="type">boolean</text>
+  <rect x="400" y="104" width="320" height="535" rx="12" class="card"/>
+  <path d="M412 104 H708 Q720 104 720 116 V150 H400 V116 Q400 104 412 104" fill="#a42a87"/>
+  <text x="418" y="134" class="table-title">VENTAS</text>
+  <text x="418" y="177" class="field key">PK  id</text><text x="636" y="177" class="type">integer</text>
+  <text x="418" y="212" class="field key">FK  producto_id</text><text x="636" y="212" class="type">integer</text>
+  <text x="418" y="247" class="field key">FK  vendedor_id</text><text x="636" y="247" class="type">integer</text>
+  <text x="418" y="282" class="field">cantidad</text><text x="636" y="282" class="type">integer</text>
+  <text x="418" y="317" class="field">precio_unitario</text><text x="615" y="317" class="type">numeric(12,2)</text>
+  <text x="418" y="352" class="field">fecha</text><text x="650" y="352" class="type">date</text>
+  <text x="418" y="387" class="field">total (calculado)</text><text x="615" y="387" class="type">numeric(22,2)</text>
+  <text x="418" y="422" class="field">estado</text><text x="620" y="422" class="type">varchar(10)</text>
+  <text x="418" y="457" class="field">FK  registrado_por *</text><text x="636" y="457" class="type">integer</text>
+  <text x="418" y="492" class="field">FK  modificado_por *</text><text x="636" y="492" class="type">integer</text>
+  <text x="418" y="527" class="field">motivo_anulacion</text><text x="615" y="527" class="type">varchar(500)</text>
+  <text x="418" y="562" class="field">actualizada_en</text><text x="615" y="562" class="type">timestamptz</text>
+  <text x="418" y="597" class="field">inventario_aplicado</text><text x="636" y="597" class="type">boolean</text>
+  <rect x="800" y="104" width="300" height="209" rx="12" class="card"/>
+  <path d="M812 104 H1088 Q1100 104 1100 116 V150 H800 V116 Q800 104 812 104" fill="#3b2c73"/>
+  <text x="818" y="134" class="table-title">VENDEDORES</text>
+  <text x="818" y="177" class="field key">PK  id</text><text x="1016" y="177" class="type">integer</text>
+  <text x="818" y="212" class="field">nombre</text><text x="1000" y="212" class="type">varchar(120)</text>
+  <text x="818" y="247" class="field key">UK  email</text><text x="1000" y="247" class="type">varchar(254)</text>
+  <text x="818" y="282" class="field">activo</text><text x="1016" y="282" class="type">boolean</text>
+  <text x="30" y="673" class="subtitle">PK: clave primaria · FK: clave foránea · UK: valor único · 1:N: relación de uno a muchos (cero o más ventas)</text>
+  <text x="30" y="697" class="subtitle">* Referencias opcionales a usuarios, tabla adicional de autenticación. El esquema completo está en database/schema.sql.</text>
+</svg>

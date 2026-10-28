@@ -4,6 +4,8 @@ API para gestionar productos, vendedores, ventas e inventario. También maneja e
 
 Está hecha con **Node.js 20, Express 5 y PostgreSQL**. La interfaz está en el proyecto `FrontEnd-Autos`; esta API también se puede probar por separado desde Swagger.
 
+El diagrama relacional, el esquema SQL y los datos de ejemplo para la prueba están explicados en [database/README.md](database/README.md).
+
 ## Antes de empezar
 
 Necesitas Node.js 20 con npm y PostgreSQL instalado y en ejecución. Comprueba Node con `node --version`.
@@ -77,6 +79,8 @@ npm.cmd run auth:create-user
 ```
 
 Retira las cuatro variables `NEW_USER_*` al terminar. Si ya tienes una cuenta, puedes usarla directamente. Para crear más usuarios, entra al frontend como administrador y abre **Usuarios**. Las cuentas creadas en un equipo no se generan automáticamente en otra instalación.
+
+Para preparar las tres cuentas locales de prueba también puedes ejecutar [database/seed-usuarios.sql](database/seed-usuarios.sql) en pgAdmin, después de instalar el esquema. Crea `admin@example.com`, `ventas@example.com` e `inventario@example.com` con sus respectivos roles y las credenciales de prueba acordadas. Si un correo ya existe, no cambia su contraseña, rol ni estado. Es una carga opcional para desarrollo; no se ejecuta al arrancar la API ni forma parte de las migraciones.
 
 La contraseña de PostgreSQL y las contraseñas para entrar a Autos son distintas. Las de Autos se guardan con scrypt y una sal aleatoria; las respuestas no incluyen contraseñas ni hashes.
 
