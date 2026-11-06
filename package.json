@@ -16,7 +16,8 @@
     "db:verify": "node --env-file=.env scripts/verify-postgres.js",
     "db:concurrency": "node --env-file=.env scripts/verify-concurrency.js",
     "db:schema": "node scripts/build-schema.js",
-    "test": "node --test"
+    "test": "node --test",
+    "test:coverage": "node --test --experimental-test-coverage"
   },
   "dependencies": {
     "cors": "^2.8.5",
